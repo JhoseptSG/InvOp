@@ -31,4 +31,11 @@ subto todos_x_mayores_a_0 : forall <i,j> in I*I : x[i,j] >= 0 ;
 
 subto todos_p_mayores_a_0 : forall <i> in I : p[i] >= 0;
 
+# tomando argentina = 1 y ecuador = 2- 
+
+# subto empatan_Arg_Ecu: x[1,2] + x[2,1] <= 1 <= 1 ; # si argentina ecuador empatan un partido su suma de victorias entre ellos debe ser a lo sumo 1 
+
+# subto ganaArgaEcu: x[1,2] >= 1 ; # si argentina gane contra ecuador debe tener al menos 1 victoria contra el mismo
+
+
 #read /home/clinux01/Escritorio/clasePractica3/eliminatorias-2026.zpl 
