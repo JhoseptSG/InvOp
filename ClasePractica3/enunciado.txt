@@ -1,0 +1,11 @@
+Vamos a resolver el problema modelado en la teórica: Eliminatorias 2026.
+Las eliminatorias sudamericanas para el Mundial de Fútbol 2026 serán jugadas por 10
+equipos. Los 6 primeros clasifican para el Mundial y el sistema es de todos contra todos
+con partido y revancha. La asignación de puntaje es 3 puntos por partido ganado y 1
+punto por empate.
+1. Diseñe un modelo de programación lineal entera que (asignando todos los
+resultados posibles) antes de realizada la primer fecha indique cuál es la máxima
+cantidad de puntos con que Argentina puede no estar entre los 6 primeros.
+2. Si en la primera fecha el próximo 7 de septiembre, Argentina (equipo 1) gana su
+partido frente a la selección de Ecuador número 2 de la eliminatoria, ¿cómo se
+incluye este resultado en el modelo? ¿Y si es un empate? ¿Y si pierde?
