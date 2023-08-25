@@ -1,15 +1,17 @@
 
-#definir variables
+#Defino variables
 
-set I := {1..10};
-var x[I*I] integer;
-var p[I] integer;
-var y[I] binary;
-param M := 100;
+set I := {1..10}; #cantidad de equipos  
+var x[I*I] integer; #cantidad de partidos que gano i contra j 
+var p[I] integer; #cantidad de puntos del equipo i 
+var y[I] binary; # 1 si el equipo 1 clasifico 0 sino
+param M := 100; # variable suficientemente grande pues cada equipo puede ganar hasta 54 puntos. 
+
 
 #funcion objetivo
 
-maximize max_puntaje: p[1];
+maximize max_puntaje: p[1]; #tomo i = 1 como argentina y calculo la maxima cantidad de puntos con la que argentina no clasifica 
+
 
 #reestricciones
 
@@ -29,4 +31,4 @@ subto todos_x_mayores_a_0 : forall <i,j> in I*I : x[i,j] >= 0 ;
 
 subto todos_p_mayores_a_0 : forall <i> in I : p[i] >= 0;
 
-#read /home/clinux01/Escritorio/clasePractica3/eliminatorias-2026.zpl
+#read /home/clinux01/Escritorio/clasePractica3/eliminatorias-2026.zpl 
