@@ -59,6 +59,25 @@ La última restricción es trivialmente verdadera si Xᵢⱼ es 0.
 
 Si Xᵢⱼ es 1, entonces uᵢ - uⱼ ≤ -1, lo cual implica que uᵢ debe ser visitada antes que uⱼ. Dado que uᵢ está limitada a n valores, esto significa que la ciudad i debe ser visitada exactamente en el turno anterior al de la ciudad j.
 
+## Ejercicio 11 - Distribución de Alfiles en un Tablero de Ajedrez
+
+El objetivo de este ejercicio es determinar la mayor cantidad de alfiles que se pueden ubicar en un tablero de ajedrez 8x8 siguiendo ciertas reglas.
+
+### Variables
+- X<sub>ij</sub>: {1 si se coloca 1 alfil en la casilla (i,j), 0 si no}
+
+### Función Objetivo
+Maximizar Σ<sub>i=1 to 8</sub> Σ<sub>j=1 to 8</sub> X<sub>ij</sub>
+
+### Restricciones
+Para cada j en {0,7}:
+- Σ<sub>i=1 to 8-j</sub> X<sub>i+j,i</sub> <= 2 (la diagonal hacia abajo a la derecha suma a lo sumo 2)
+- Σ<sub>i=1 to 8-j</sub> X<sub>i,i+j</sub> <= 2 (la diagonal hacia arriba a la derecha suma a lo sumo 2)
+- Σ<sub>i=1 to 8-j</sub> X<sub>9-i-j,i</sub> <= 2 (la diagonal hacia abajo a la izquierda suma a lo sumo 2)
+- Σ<sub>i=1 to 8-j</sub> X<sub>9-i,i+j</sub> <= 2 (la diagonal hacia arriba a la izquierda suma a lo sumo 2)
+
+
+
 
 
 
