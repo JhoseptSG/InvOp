@@ -6,28 +6,35 @@ Cada colegio construido debe ser asignado al menos a un distrito y como mucho a 
 "cⱼ" = costo de construir el colegio j. 
 "F" = constante de proporcionalidad "pᵢ" a la cantidad total de alumnos. 
 
-Costo_j = c_j +F * s_j donde s_j es la suma de las poblaciones de los distritos asociados a ese colegio. 
-B = presupuesto designado a construir todos los colegios. 
-T_j = capacidad de alumnos soportado por el colegio construido en j. 
-los distritos u y v deben ser atentidos por 2 colegios distintos. 
+- Costoⱼ = cⱼ + F * sⱼ, donde sⱼ es la suma de las poblaciones de los distritos asociados a ese colegio.
+- B: Presupuesto designado para construir todos los colegios.
+- Tⱼ: Capacidad de alumnos soportada por el colegio construido en j.
+- Los distritos u y v deben ser atendidos por 2 colegios distintos. 
 
-#### Modelo de programacion lineal. 
-Variables:
-X_ij = Binaria { 1 si el distrito i tiene asignado el colegio construido en el sitio j 0 sino} 
-W_j = Binaria {1 si el colegio j es construido 0 sino}
+### Modelo de Programación Lineal
 
-W_j = 1 <--> sum de i en {I} X_i_j >= 1 para todo j en {J}
-Funcion objetivo: minimizar sumatoria de (i,j) en {I}*{J} de d_ij * x_ij 
+**Variables:**
+- Xᵢⱼ: Binaria { 1 si el distrito i tiene asignado el colegio construido en el sitio j, 0 en caso contrario }
+- Wⱼ: Binaria { 1 si el colegio j es construido, 0 en caso contrario }
 
-Reestricciones: 
+Se cumple que Wⱼ = 1 ⇔ Σᵢ Xᵢⱼ ≥ 1, para todo j ∈ {J}
 
-forall i en {I}: sum de j en {J} d_ij = 1    
-forall j en {J}: sum de i en {I} x_ij >= W_j 
-forall j en {J}: sum de i en {I} x_ij <= 2 * W_j 
-sum j en {J}: c_j * W_j  + sum i en {I} x_ij * pi * F * <= B
-forall j en {J}: sum de i en {I} x_ij * p_i <= T_j 
-forall j en {J}: x_u_j + x_v_j <= 1 
-forall j en {J}: sum de i en {I} X_i_j >= W_j y sum de i en {I} X_i_j <= 2*(W_j) 
+**Función Objetivo:**
+Minimizar Σᵢⱼ dᵢⱼ * Xᵢⱼ
+
+**Restricciones:**
+
+Para cada i ∈ {I}:
+- Σⱼ dᵢⱼ = 1
+
+Para cada j ∈ {J}:
+- Σᵢ Xᵢⱼ ≥ Wⱼ
+- Σᵢ Xᵢⱼ ≤ 2 * Wⱼ
+- cⱼ * Wⱼ + Σᵢ Xᵢⱼ * pᵢ * F ≤ B
+- Σᵢ Xᵢⱼ * pᵢ ≤ Tⱼ
+- Xᵤⱼ + Xᵥⱼ ≤ 1
+- Σᵢ Xᵢⱼ ≥ Wⱼ y Σᵢ Xᵢⱼ ≤ 2 * Wⱼ
+
 
 
 
