@@ -36,6 +36,39 @@ Para cada j ∈ {J}:
 - Σᵢ Xᵢⱼ * pᵢ ≤ Tⱼ
 - Xᵤⱼ + Xᵥⱼ ≤ 1
 
+### Ejercicio 10 - Viajante de Comercio
+
+En este ejercicio, se tienen N ciudades que se quieren recorrer todas, pasando a lo sumo una vez por cada ciudad y terminando en la ciudad inicial.
+
+- Dᵢⱼ: distancia entre la ciudad i y la ciudad j
+
+**Variables:**
+- Xᵢⱼ: {1 si se viaja de la ciudad i a la ciudad j, 0 en caso contrario}
+- uᵢ: Número natural que indica el orden de visita de la ciudad i.
+
+**Función Objetivo:** 
+Minimizar Σᵢ=1 to N : Σⱼ = 1 to N : Xᵢⱼ * Dᵢⱼ 
+
+**Restricciones:**
+- Para cada i ∈ {1..N} : Σⱼ = 1 to N con i ≠ j: Xᵢⱼ = 1        (Se sale de cada ciudad exactamente una vez)
+- Para cada i ∈ {1..N} : Σⱼ = 1 to N con i ≠ j: Xⱼᵢ = 1        (Se llega a cada ciudad exactamente una vez)
+- 1 ≤ uᵢ ≤ n
+- Para cada i ∈ {1..N} y j ∈ {1..N} con i ≠ j: uᵢ - uⱼ + N * Xᵢⱼ ≤ N-1
+
+La última restricción es trivialmente verdadera si Xᵢⱼ es 0. 
+
+Si Xᵢⱼ es 1, entonces uᵢ - uⱼ ≤ -1, lo cual implica que uᵢ debe ser visitada antes que uⱼ. Dado que uᵢ está limitada a n valores, esto significa que la ciudad i debe ser visitada exactamente en el turno anterior al de la ciudad j.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
