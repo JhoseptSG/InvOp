@@ -1,6 +1,4 @@
-
-
-# Ejercicio 1 
+### Ejercicio 1 
 
 Xi = cantidad de alimento 1,2 o 3 que sirvo en gramos 
 Función objetivo: min  Σ( i = 1 a 3)  x_i * c_i / 30  
@@ -13,7 +11,7 @@ S.A:  A_i_A  = vitamina A por 30 gramos del alimento i
 
 X_i E R 
 
-Ejercicio 2. 
+### Ejercicio 2. 
 Presupuesto: 1.000 millones de pesos 
 Hay 6 proyectos. Por lo menos el 50% del proyecto de energía nuclear. 
 Minimo 300 millones a energía solar 
@@ -29,10 +27,10 @@ Sumatoria i en {1,...,6} X_i <= 1000
 # invertir más de 300 millones en energía solar 
 X_1 + X_2 >= 300 
 
-# financiar al menos el 50% de energía nuclear 
+financiar al menos el 50% de energía nuclear 
 X_5 >= 200 
 
-# financió a lo sumo el proyecto completo 
+financió a lo sumo el proyecto completo 
 0 <= X_i <= F_i 
 
 
