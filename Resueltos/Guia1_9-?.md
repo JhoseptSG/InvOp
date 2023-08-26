@@ -1,4 +1,4 @@
-### Ejercicio 9
+## Ejercicio 9
 - Hay I distritos y cada uno tiene "pᵢ" alumnos, solo se pueden ubicar las escuelas en "J" sitios de la ciudad. 
 - "dᵢⱼ" ≥ 0 la distancia desde el centro del distrito i hasta el sitio j. 
 - En un sitio cabe a lo sumo un colegio y cada distrito debe tener asignado un colegio.
@@ -36,10 +36,10 @@ Para cada j ∈ {J}:
 - Σᵢ Xᵢⱼ * pᵢ ≤ Tⱼ
 - Xᵤⱼ + Xᵥⱼ ≤ 1
 
-### Ejercicio 10 - Viajante de Comercio
+## Ejercicio 10 - Viajante de Comercio
 
 En este ejercicio, se tienen N ciudades que se quieren recorrer todas, pasando a lo sumo una vez por cada ciudad y terminando en la ciudad inicial.
-
+### Modelo de Programación Lineal
 - Dᵢⱼ: distancia entre la ciudad i y la ciudad j
 
 **Variables:**
@@ -62,21 +62,19 @@ Si Xᵢⱼ es 1, entonces uᵢ - uⱼ ≤ -1, lo cual implica que uᵢ debe ser 
 ## Ejercicio 11 - Distribución de Alfiles en un Tablero de Ajedrez
 
 El objetivo de este ejercicio es determinar la mayor cantidad de alfiles que se pueden ubicar en un tablero de ajedrez 8x8 siguiendo ciertas reglas.
-
-### Variables
+### Modelo de Programación Lineal
+**Variables:**
 - X<sub>ij</sub>: {1 si se coloca 1 alfil en la casilla (i,j), 0 si no}
 
 ### Función Objetivo
 Maximizar Σ<sub>i=1 to 8</sub> Σ<sub>j=1 to 8</sub> X<sub>ij</sub>
 
-### Restricciones
+**Función Objetivo:** 
 Para cada j en {0,7}:
 - Σ<sub>i=1 to 8-j</sub> X<sub>i+j,i</sub> <= 2 (la diagonal hacia abajo a la derecha suma a lo sumo 2)
 - Σ<sub>i=1 to 8-j</sub> X<sub>i,i+j</sub> <= 2 (la diagonal hacia arriba a la derecha suma a lo sumo 2)
 - Σ<sub>i=1 to 8-j</sub> X<sub>9-i-j,i</sub> <= 2 (la diagonal hacia abajo a la izquierda suma a lo sumo 2)
 - Σ<sub>i=1 to 8-j</sub> X<sub>9-i,i+j</sub> <= 2 (la diagonal hacia arriba a la izquierda suma a lo sumo 2)
-
-
 
 
 
