@@ -150,6 +150,25 @@ Maximizar: sum (i,j) en {1..n}x{1..n} x_i_j ( creo que da lo mismo si minimizo o
 - for all (i,j) en {2,5,8}x{2,5,8} : sum k = i-1 hasta i+1 , n = j-1 hasta j+1 : X_k_n = 45 (cada cuadrante suma 45)
 - for all (i,j,r1,r2) en {1..3}x{1..3}x{0,2,5}x{0,2,5}: for all (k,n) en {1..3}x{1..3} with i != k y j != n : X_i+r1_j+r2 != X_k+r1_n+r2; (cuadrante uno tiene todos distintos)
 
+## Ejercicio 15 - Modulos 
+min z = |x| + |y| + |w|
+
+**Modelo de Programación Lineal**
+**Variables:**
+
+
+**Función Objetivo**
+min 
+
+**Restricciones:**
+x + y <= 1
+2x + w = 3
+
+
+
+
+
+
 
 
 
