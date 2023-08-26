@@ -1,4 +1,7 @@
-Ejercicio 1 
+
+
+# Ejercicio 1 
+
 Xi = cantidad de alimento 1,2 o 3 que sirvo en gramos 
 Función objetivo: min  Σ( i = 1 a 3)  x_i * c_i / 30  
 C_i = costo por 30 gramos 
