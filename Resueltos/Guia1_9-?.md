@@ -89,7 +89,7 @@ x_i_j = {si el camino del rey pasa por la casilla (i,j) 0 si no}
 
 Minimizar: sum (i,j) en {1..n}x{1..n} x_i_j 
 
-**Función Objetivo:** 
+**Restricciones:**
 - for all (i,j) en {E}: x_i_j = 0; 
 - X_s_t = 1 y X_u_v = 1
 forall (i,j) / (u,v) y (s,t)
@@ -130,6 +130,26 @@ Minimizar: Σ<sub>i ∈ {A, B, C}</sub> Σ<sub>j ∈ {1, 2, 3}</sub> x<sub>i_j</
 - ∑ (i, j) en {A, B, C} x {1, 2, 3}: Y<sub>i_j</sub> = C
 - Para todo (i, j) en {A, B, C} x {1, 2, 3}:
   - 0.0001 * Y<sub>i,j</sub> <= X<sub>i,j</sub> <= Y<sub>i,j</sub> * 600
+
+## Ejercicio 14 - Sudoku
+
+### Modelo de Programación Lineal
+
+**Variables:**
+x_i_j = {numero que pongo en la casilla (i,j) } 
+
+### Función Objetivo 
+
+Maximizar: sum (i,j) en {1..n}x{1..n} x_i_j ( creo que da lo mismo si minimizo o maximizo)
+
+**Restricciones:**
+- for all (i) en {1..9} : sum j en {1..9} X_i_j = 45, X_j_i = 45  (toda las filas y columnas suman 45)
+- for all (i,j,k) en {1..9}x{1..9}x{1..9} with k!= j:  X_i_j != X_i_k (no hay repes en filas)
+- for all (i,j,k) en {1..9}x{1..9}x{1..9} with k!= i: X_i_j != X_k_j  (no hay repes en las columnas)
+
+- for all (i,j) en {2,5,8}x{2,5,8} : sum k = i-1 hasta i+1 , n = j-1 hasta j+1 : X_k_n = 45 (cada cuadrante suma 45)
+- for all (i,j,r1,r2) en {1..3}x{1..3}x{0,2,5}x{0,2,5}: for all (k,n) en {1..3}x{1..3} with i != k y j != n : X_i+r1_j+r2 != X_k+r1_n+r2; (cuadrante uno tiene todos distintos)
+
 
 
 
