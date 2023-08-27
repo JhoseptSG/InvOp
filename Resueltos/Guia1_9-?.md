@@ -136,34 +136,45 @@ Minimizar: Σ<sub>i ∈ {A, B, C}</sub> Σ<sub>j ∈ {1, 2, 3}</sub> x<sub>i_j</
 ### Modelo de Programación Lineal
 
 **Variables:**
-x_i_j = {numero que pongo en la casilla (i,j) } 
+- x<sub>ij</sub>: Número que se coloca en la casilla (i, j)
 
-### Función Objetivo 
+### Función Objetivo
 
-Maximizar: sum (i,j) en {1..n}x{1..n} x_i_j ( creo que da lo mismo si minimizo o maximizo)
+Maximizar: Σ<sub>(i,j) ∈ {1..n} × {1..n}</sub> x<sub>ij</sub> (Note: La función objetivo podría ser tanto de maximización como de minimización en este caso, ya que no afecta la solución del Sudoku)
 
-**Restricciones:**
-- for all (i) en {1..9} : sum j en {1..9} X_i_j = 45, X_j_i = 45  (toda las filas y columnas suman 45)
-- for all (i,j,k) en {1..9}x{1..9}x{1..9} with k!= j:  X_i_j != X_i_k (no hay repes en filas)
-- for all (i,j,k) en {1..9}x{1..9}x{1..9} with k!= i: X_i_j != X_k_j  (no hay repes en las columnas)
+### Restricciones:
 
-- for all (i,j) en {2,5,8}x{2,5,8} : sum k = i-1 hasta i+1 , n = j-1 hasta j+1 : X_k_n = 45 (cada cuadrante suma 45)
-- for all (i,j,r1,r2) en {1..3}x{1..3}x{0,2,5}x{0,2,5}: for all (k,n) en {1..3}x{1..3} with i != k y j != n : X_i+r1_j+r2 != X_k+r1_n+r2; (cuadrante uno tiene todos distintos)
+- Para cada i en {1..9}: Σ<sub>j ∈ {1..9}</sub> x<sub>ij</sub> = 45, Σ<sub>i ∈ {1..9}</sub> x<sub>ji</sub> = 45 (la suma de cada fila y columna es 45)
+- Para cada i, j, k en {1..9} con k ≠ j: x<sub>ij</sub> ≠ x<sub>ik</sub> (no hay repeticiones en las filas)
+- Para cada i, j, k en {1..9} con k ≠ i: x<sub>ij</sub> ≠ x<sub>kj</sub> (no hay repeticiones en las columnas)
+- Para cada i, j en {2, 5, 8} × {2, 5, 8}: Σ<sub>k = i-1 hasta i+1</sub> Σ<sub>n = j-1 hasta j+1</sub> x<sub>kn</sub> = 45 (cada cuadrante suma 45)
+- Para cada i, j, r1, r2 en {1..3} × {1..3} × {0, 3, 6} × {0, 3, 6}:
+   - Para cada k, n en {1..3} × {1..3} con i ≠ k y j ≠ n: x<sub>i+r1,j+r2</sub> ≠ x<sub>k+r1,n+r2</sub> (ningún número se repite en un cuadrante)
 
-## Ejercicio 15 - Modulos 
+
+## Ejercicio 15 - Módulos
+
+El objetivo de este ejercicio es minimizar la siguiente función:
+
 min z = |x| + |y| + |w|
 
-**Modelo de Programación Lineal**
+### Modelo de Programación Lineal
+
 **Variables:**
+- T<sub>i</sub>: Número real
 
-
-**Función Objetivo**
-min 
+**Función Objetivo:**
+min Σ<sub>i ∈ {1, 2, 3}</sub> T<sub>i</sub>
 
 **Restricciones:**
-x + y <= 1
-2x + w = 3
-
+- x + y ≤ 1
+- 2x + w = 3
+- T<sub>1</sub> ≥ x
+- T<sub>1</sub> ≥ -x
+- T<sub>2</sub> ≥ y
+- T<sub>2</sub> ≥ -y
+- T<sub>3</sub> ≥ z
+- T<sub>3</sub> ≥ -z
 
 
 
