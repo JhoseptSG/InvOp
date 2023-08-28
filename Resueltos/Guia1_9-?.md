@@ -143,8 +143,8 @@ Minimizar: Σ<sub>i ∈ {A, B, C}</sub> Σ<sub>j ∈ {1, 2, 3}</sub> x<sub>i_j</
 Maximizar: Σ<sub>(i,j) ∈ {1..n} × {1..n}</sub> x<sub>ij</sub> (Note: La función objetivo podría ser tanto de maximización como de minimización en este caso, ya que no afecta la solución del Sudoku)
 
 ### Restricciones:
-
-- Para cada i en {1..9}: Σ<sub>j ∈ {1..9}</sub> x<sub>ij</sub> = 45, Σ<sub>i ∈ {1..9}</sub> x<sub>ji</sub> = 45 (la suma de cada fila y columna es 45)
+- para cada i,j en {1..9} x {1..9} : 1 <= X<sub>ij</sub> <= 9
+- Para cada i en {1..9}: Σ<sub>j ∈ {1..9}</sub> X<sub>ij</sub> = 45, Σ<sub>i ∈ {1..9}</sub> x<sub>ji</sub> = 45 (la suma de cada fila y columna es 45)
 - Para cada i, j, k en {1..9} con k ≠ j: x<sub>ij</sub> ≠ x<sub>ik</sub> (no hay repeticiones en las filas)
 - Para cada i, j, k en {1..9} con k ≠ i: x<sub>ij</sub> ≠ x<sub>kj</sub> (no hay repeticiones en las columnas)
 - Para cada i, j en {2, 5, 8} × {2, 5, 8}: Σ<sub>k = i-1 hasta i+1</sub> Σ<sub>n = j-1 hasta j+1</sub> x<sub>kn</sub> = 45 (cada cuadrante suma 45)
@@ -175,6 +175,44 @@ min Σ<sub>i ∈ {1, 2, 3}</sub> T<sub>i</sub>
 - T<sub>2</sub> ≥ -y
 - T<sub>3</sub> ≥ z
 - T<sub>3</sub> ≥ -z
+
+## Ejercicio 16 - Festival de musica
+## caso 1 
+- Hay 21 franjas horarias(3 dias 7 franjas cada una) y 4 escenarios por lo que pueden tocar a lo sumo 4 bandas en cada franja. 
+- i E {B} B = conjunto de bandas deben tocar exactamente una vez si es invitada. 
+- e_i = cantidad de espectadores que atraera la banda i. 
+- r_i = ganancia neta en pesos. 
+- G_k = conjunto de las bandas de Genero k. G_k interseccion G_r = vacio si k != r (k E {1..5})
+- l_j = capacidad del escenario E_j 
+- la cantidad de espectadores no debe superar los 2000 en cada franja
+- se deben invitar al menos g_k bandas de genero G_k. 
+- el escenario 4 debe permanecer vacio durante la primer franja horaria cada dia 
+- las bandas en el conjunto P deben ser invitadas si o si.
+- cada banda del conjunto P tiene que tocar durante alguna de las ultimas 2 franjas horarios de cualquier dia. 
+- la ganancia neta debe superar los R pesos.
+- las bandas invitadas con menos de S espectadores deben tocar durante las primeras 3 franjas horarias. 
+ 
+### Modelo de Programación Lineal
+
+**Variables:**
+X_d_f_i_j = Binaria 1 si en el dia d, franja f si la banda i toca en el escenario j 0 sino.
+W_i = Binaria 1 si la banda i es invitada 0 sino. 
+
+**Función Objetivo:**
+
+**Restricciones:**
+- forall (d,f,j) en {1..3} x {1..7} x {1..4} : sum i en {B} X_d_f_i_j <= 1.
+- forall i en {B} : sum (d,f,j) en {1..3} x {1..7} x {1..4} X_d_f_i_j = W_i
+- forall (d,f,j) en {1..3} x {1..7} x {1..4} : sum i en {B} X_d_f_i_j * e_i <= l_j
+- forall (d,f) en {1..3} x {1..7} : sum i en {B} sum j en {1..4} X_d_f_i_j * e_i <= 2000 
+- forall k en {1..5} : sum i en {G_k}: W_i >= g_k
+- forall d en {1..3} : sum i en {B} X_d_1_i_4 = 0
+- forall i en {P} : W_i = 1 
+- forall i en {P} : sum (d,f,j) en {1..3} x {6,7} x {1..4} X_d_f_i_j = W_i
+- sum i en {B} : r_i >= R
+- 
+
+
 
 
 
