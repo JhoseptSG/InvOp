@@ -1,0 +1,14 @@
+solution status: optimal solution found
+objective value:                                11385
+Q                                                   1 	(obj:135)
+X$A#3                                             400 	(obj:5)
+X$B#1                                             100 	(obj:7)
+X$B#2                                             500 	(obj:4)
+X$C#1                                             400 	(obj:4)
+Y$A#1                                               1 	(obj:0)
+Y$A#3                                               1 	(obj:0)
+Y$B#1                                               1 	(obj:0)
+Y$B#2                                               1 	(obj:0)
+Y$C#1                                               1 	(obj:0)
+C                                                   5 	(obj:450)
+X$A#1                                             300 	(obj:9)
