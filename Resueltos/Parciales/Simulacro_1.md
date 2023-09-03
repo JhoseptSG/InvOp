@@ -40,28 +40,37 @@ a.
 ### Modelo de Programación Lineal
 - A = {1..N} actividades de inversion
 - M = {1..48}
+- S = {1..3}
+- K = {1..6}
 - l_i = duracion de la actividad i.
-- C_m = capital en el mes i. 
 - m_i = minimo de inversion en la actividad i. 
 - r_i = retorno de la actividad i por peso invertido por mes de duracion. 
 
 **Variables:**
 - X_i_m1_m2 = cantidad de dinero invertida en la actividad i en el mes m1 hasta el mes m2.
 - Y_i_m1_m2 = si se  invierte en la actividad i en el mes m1 hasta el mes m2.
-- 
- 
- 
+- C_m = capital en el mes i. ()
+- I_m = impuesto en el mes i. (2..48)
+- F_s_m = binaria si esta en el segmento s 
+- L_k_m = Son los coeficientes de la combinación lineal entre los extremos del intervalo correspondiente.
 ### Función Objetivo
-- maximizar sum <i,m1,m2> in <A,M,M> X_i_m1_m2 * r_i * (m2-m1+1) 
+- maximizar C_49. 
 
 ### Restricciones: 
 - forall <i> in <A> : sum <m1,m2> in <M,M> : Y_i,m1,m2 <= 1 ;
-- forall <i,m1,m2> in <A,M,M>  with m2 != m1 + l_i -1: Y_i,m1,m2 == 0 ;
+- forall <i,m1,m2> in <A/B,M,M>  with m2 < m1 + l_i -1: Y_i,m1,m2 == 0 ;
+- forall <i,m1,m2> in <B,M,M>  with m2 > m1 + u_i -1: Y_i,m1,m2 == 0 ;
 - forall <m1> in <M> : sum <i,m2> in <A,M> : X_i_m1_m2 <= C_m1;
-- forall <m> in {2..49} : C_m = C_(m-1) - sum <i,m2> in <A,M> Y_i,m-1,m2 + sum <i,m1> in <A,M> (Y_i,m1,m-1) * r_i * (m1-m+1) 
+- forall <m> in {2..49} : C_m = C_(m-1) - sum <i,m2> in <A,M> Y_i,m-1,m2 + sum <i,m1> in <A,M> (Y_i,m1,m-1) * r_i * (m1-m+1)
+- forall <m> in {2..49} : C_m <= 500 000 
+- C_1 = C
+- forall <i,m1,m2> in <A,M,M> :   m_i * Y_i_m1_m2 <= X_i_m1_m2 <= M*Y_i_m1_m2  ; 
 
-
-
+- forall <m> in {2..48} :  sum s in {S} : F_s_m = 1 
+- forall <m,s> in {2..48} x {S} : F_s_m = L_2s-1_m + L_2s_m 
+- forall <m,k> in {2..48} x {K} : L_k_m >= 0; 
+- forall <m> in {2..48} C_m == 0 * L_1_m + 2000 * L_2_m + 2000 * L_3_m + 5000 * L_4_m + 5000 * L_5_m + 500 000 * L_6_m
+- forall <m> in {2..48} I_m = 0 * L_1_m + 20 * L_2_m + 20 * L_3_m + 65 * L_4_m + 65 * L_5_m + 9965 * L_6_m
 
 
 
