@@ -49,8 +49,9 @@ a.
 **Variables:**
 - X_i_m1_m2 = cantidad de dinero invertida en la actividad i en el mes m1 hasta el mes m2.
 - Y_i_m1_m2 = si se  invierte en la actividad i en el mes m1 hasta el mes m2.
-- C_m = capital en el mes i. ()
-- I_m = impuesto en el mes i. (2..48)
+- CI_m = capital en el mes i post impuestos.
+- C_m =  capital en el mes i pre impuestos. 
+- I_m =  impuesto en el mes i. (2..48)
 - F_s_m = binaria si esta en el segmento s 
 - L_k_m = Son los coeficientes de la combinación lineal entre los extremos del intervalo correspondiente.
 ### Función Objetivo
@@ -60,11 +61,13 @@ a.
 - forall <i> in <A> : sum <m1,m2> in <M,M> : Y_i,m1,m2 <= 1 ;
 - forall <i,m1,m2> in <A/B,M,M>  with m2 < m1 + l_i -1: Y_i,m1,m2 == 0 ;
 - forall <i,m1,m2> in <B,M,M>  with m2 > m1 + u_i -1: Y_i,m1,m2 == 0 ;
-- forall <m1> in <M> : sum <i,m2> in <A,M> : X_i_m1_m2 <= C_m1;
+
+- forall <m1> in <M> : sum <i,m2> in <A,M> : X_i_m1_m2 <= CI_m1;
 - forall <m> in {2..49} : C_m = C_(m-1) - sum <i,m2> in <A,M> Y_i,m-1,m2 + sum <i,m1> in <A,M> (Y_i,m1,m-1) * r_i * (m1-m+1)
-- forall <m> in {2..49} : C_m <= 500 000 
-- C_1 = C
+- C_1 = C = CI_1
 - forall <i,m1,m2> in <A,M,M> :   m_i * Y_i_m1_m2 <= X_i_m1_m2 <= M*Y_i_m1_m2  ; 
+- forall <m> in {2..48} = CI_m == C_m - I_m
+
 
 - forall <m> in {2..48} :  sum s in {S} : F_s_m = 1 
 - forall <m,s> in {2..48} x {S} : F_s_m = L_2s-1_m + L_2s_m 
