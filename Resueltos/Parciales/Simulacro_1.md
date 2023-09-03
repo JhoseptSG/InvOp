@@ -32,48 +32,49 @@
 a.
 - T<sub>d_f</sub> = Variable auxiliar extra.
 - maximizar T<sub>d_f</sub>.
-- forall <d,f> in <D,F> T<sub>df</sub> <= ∑<sub>i,j</sub> in <I * J>: X<sub>ijdf</sub>;
+- forall <d,f> in <D,F> T<sub>df</sub> <= ∑<sub>i,j</sub> in <I * J>: X<sub>ijdf</sub>
 
 
 ## Ejercicio 3 - Fábrica
 
 ### Modelo de Programación Lineal
-- A = {1..N} actividades de inversion
+- A = {1..N} actividades de inversión
 - M = {1..48}
 - S = {1..3}
 - K = {1..6}
-- l_i = duracion de la actividad i.
-- m_i = minimo de inversion en la actividad i. 
-- r_i = retorno de la actividad i por peso invertido por mes de duracion. 
+- l<sub>i</sub> = duración de la actividad i.
+- m<sub>i</sub> = mínimo de inversión en la actividad i.
+- r<sub>i</sub> = retorno de la actividad i por peso invertido por mes de duración.
 
 **Variables:**
-- X_i_m1_m2 = cantidad de dinero invertida en la actividad i en el mes m1 hasta el mes m2.
-- Y_i_m1_m2 = si se  invierte en la actividad i en el mes m1 hasta el mes m2.
-- CI_m = capital en el mes i post impuestos.
-- C_m =  capital en el mes i pre impuestos. 
-- I_m =  impuesto en el mes i. (2..48)
-- F_s_m = binaria si esta en el segmento s 
-- L_k_m = Son los coeficientes de la combinación lineal entre los extremos del intervalo correspondiente.
+- X<sub>i_m1_m2</sub> = cantidad de dinero invertida en la actividad i en el mes m1 hasta el mes m2.
+- Y<sub>i_m1_m2</sub> = si se invierte en la actividad i en el mes m1 hasta el mes m2.
+- CI<sub>m</sub> = capital en el mes i post impuestos.
+- C<sub>m</sub> = capital en el mes i pre impuestos.
+- I<sub>m</sub> = impuesto en el mes i. (2..48)
+- F<sub>s_m</sub> = binaria si está en el segmento s
+- L<sub>k_m</sub> = Son los coeficientes de la combinación lineal entre los extremos del intervalo correspondiente.
+
 ### Función Objetivo
-- maximizar C_49. 
+- maximizar C<sub>49</sub>.
 
-### Restricciones: 
-- forall <i> in <A> : sum <m1,m2> in <M,M> : Y_i,m1,m2 <= 1 ;
-- forall <i,m1,m2> in <A/B,M,M>  with m2 < m1 + l_i -1: Y_i,m1,m2 == 0 ;
-- forall <i,m1,m2> in <B,M,M>  with m2 > m1 + u_i -1: Y_i,m1,m2 == 0 ;
+### Restricciones:
+- forall <i> in <A>: ∑<sub>m1,m2</sub> in <M,M>: Y<sub>i,m1,m2</sub> <= 1
+- forall <i,m1,m2> in <A/B,M,M> with m2 < m1 + l<sub>i</sub> - 1: Y<sub>i,m1,m2</sub> == 0
+- forall <i,m1,m2> in <B,M,M> with m2 > m1 + u<sub>i</sub> - 1: Y<sub>i,m1,m2</sub> == 0
 
-- forall <m1> in <M> : sum <i,m2> in <A,M> : X_i_m1_m2 <= CI_m1;
-- forall <m> in {2..49} : C_m = C_(m-1) - sum <i,m2> in <A,M> Y_i,m-1,m2 + sum <i,m1> in <A,M> (Y_i,m1,m-1) * r_i * (m1-m+1)
-- C_1 = C = CI_1
-- forall <i,m1,m2> in <A,M,M> :   m_i * Y_i_m1_m2 <= X_i_m1_m2 <= M*Y_i_m1_m2  ; 
-- forall <m> in {2..48} = CI_m == C_m - I_m
+- forall <m1> in <M>: ∑<sub>i,m2</sub> in <A,M>: X<sub>i_m1_m2</sub> <= CI<sub>m1</sub>
+- forall <m> in {2..49}: C<sub>m</sub> = C<sub>m-1</sub> - ∑<sub>i,m2</sub> in <A,M> Y<sub>i,m-1,m2</sub> + ∑<sub>i,m1</sub> in <A,M> (Y<sub>i,m1,m-1</sub>) * r<sub>i</sub> * (m1-m+1)
+- C<sub>1</sub> = C = CI<sub>1</sub>
+- forall <i,m1,m2> in <A,M,M>: m<sub>i</sub> * Y<sub>i_m1_m2</sub> <= X<sub>i_m1_m2</sub> <= M*Y<sub>i_m1_m2</sub>
+- forall <m> in {2..48} = CI<sub>m</sub> == C<sub>m</sub> - I<sub>m</sub>
 
+- forall <m> in {2..48}: ∑<sub>s</sub> in {S}: F<sub>s_m</sub> = 1
+- forall <m,s> in {2..48} x {S}: F<sub>s_m</sub> = L<sub>2s-1_m</sub> + L<sub>2s_m</sub>
+- forall <m,k> in {2..48} x {K}: L<sub>k_m</sub> >= 0
+- forall <m> in {2..48} C<sub>m</sub> == 0 * L<sub>1_m</sub> + 2000 * L<sub>2_m</sub> + 2000 * L<sub>3_m</sub> + 5000 * L<sub>4_m</sub> + 5000 * L<sub>5_m</sub> + 500 000 * L<sub>6_m</sub>
+- forall <m> in {2..48} I<sub>m</sub> = 0 * L<sub>1_m</sub> + 20 * L<sub>2_m</sub> + 20 * L<sub>3_m</sub> + 65 * L<sub>4_m</sub> + 65 * L<sub>5_m</sub> + 9965 * L<sub>6_m</sub>
 
-- forall <m> in {2..48} :  sum s in {S} : F_s_m = 1 
-- forall <m,s> in {2..48} x {S} : F_s_m = L_2s-1_m + L_2s_m 
-- forall <m,k> in {2..48} x {K} : L_k_m >= 0; 
-- forall <m> in {2..48} C_m == 0 * L_1_m + 2000 * L_2_m + 2000 * L_3_m + 5000 * L_4_m + 5000 * L_5_m + 500 000 * L_6_m
-- forall <m> in {2..48} I_m = 0 * L_1_m + 20 * L_2_m + 20 * L_3_m + 65 * L_4_m + 65 * L_5_m + 9965 * L_6_m
 
 
 
