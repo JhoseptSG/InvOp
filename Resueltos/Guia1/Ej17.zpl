@@ -29,7 +29,7 @@ subto maximo_3minas: forall <j> in J : sum <i> in I : X[i,j] <= 3 ;
 subto Rel_TconX: forall <i,j> in I*J : T[i] >= j*X[i,j] ; 
 subto Rel_YconX: forall <i,j> in I*J : Y[i,j] <= X[i,j] * L[i] ; 
 
-#subto todasinicianabiertas: forall <i> in I : T[i] >= 1; 
+subto todasinicianabiertas: forall <i> in I : T[i] >= 1; 
 
 subto MinimoIA: forall <j> in J: IA[j] >= (sum <i> in I : Y[i,j] ) * 2 / 3  ; 
 
