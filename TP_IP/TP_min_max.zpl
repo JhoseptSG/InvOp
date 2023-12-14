@@ -18,8 +18,8 @@ minimize base: sum <i,k> in I*K_odd : W[i,k];
 
 #General
 
-#subto r1: forall <i,j> in I*I with j != i: sum <k> in K with k <= 9 : (X[i,j,k] + X[j,i,k])  == 1;
-#subto r2: forall <i,j> in I*I with j != i: sum <k> in K with k > 9 : (X[i,j,k] + X[j,i,k])  == 1;
+subto r1: forall <i,j> in I*I with j != i: sum <k> in K with k <= 9 : (X[i,j,k] + X[j,i,k])  == 1;
+subto r2: forall <i,j> in I*I with j != i: sum <k> in K with k > 9 : (X[i,j,k] + X[j,i,k])  == 1;
 subto r3: forall <i,j> in I*I with j != i: sum <k> in K : X[i,j,k] == 1;
 subto r4: forall <j,k> in I*K : sum <i> in I with i != j : (X[i,j,k] + X[j,i,k]) == 1;
 
@@ -36,4 +36,4 @@ subto r12: forall <i,k> in I*K_odd: sum <j> in I with i != j: X[j,i,k+1] >= W[i,
 
 #min_max
 subto r19: forall <i,j,k> in I*I*K with j != i and k <= 18-c : sum <k2> in K with k <= k2 and k2 <= k+c: (X[i,j,k2] + X[j,i,k2]) <= 1;
-subto r20: forall <i,j,k> in I*I*K with j != i and d < k and k <= 18-c : sum <k2> in K  with k2 <= k + d and k-d <= k2 and k2 != k: X[i,j,k2] >= X[i,k,k];
+subto r20: forall <i,j,k> in I*I*K with j != i and d < k and k <= 18-d : sum <k2> in K  with k2 <= k + d and k-d <= k2 and k2 != k: X[i,j,k2] >= X[j,i,k];
