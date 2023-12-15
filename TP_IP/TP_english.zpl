@@ -2,7 +2,6 @@
 set I := {1..10};
 set K := {1..18};
 set K_odd := {<k> in K with k mod 2 == 1};
-set Is = {2,7}
 #Variables 
 
 var X[I*I*K] binary;

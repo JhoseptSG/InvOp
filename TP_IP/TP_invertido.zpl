@@ -34,7 +34,3 @@ subto r12: forall <i,k> in I*K_odd: sum <j> in I with i != j: X[j,i,k+1] >= W[i,
 
 #invertido
 subto r15: forall <i,j,k> in I*I*K with j != i and 1 <= k  and k <= 9 : X[i,j,k] == X[j,i,19-k];
-
-# Parte Argentina Brasil 
-
-subto r5: forall <i> in I without Is: forall <k> in K with k < 18 : sum <j> in Is : (X[i,j,k] + X[j,i,k] + X[i,j,k+1] + X[j,i,k+1]) <= 1;
