@@ -35,5 +35,5 @@ subto r11: forall <i,k> in I*K_odd: sum <j> in I with i != j: X[j,i,k] >= W[i,k]
 subto r12: forall <i,k> in I*K_odd: sum <j> in I with i != j: X[j,i,k+1] >= W[i,k] ;
 
 #min_max
-subto r19: forall <i,j,k> in I*I*K with j != i and k <= 18-c : sum <k2> in K with k <= k2 and k2 <= k+c: (X[i,j,k2] + X[j,i,k2]) <= 1;
-subto r20: forall <i,j,k> in I*I*K with j != i and d < k and k <= 18-d : sum <k2> in K  with k2 <= k + d and k-d <= k2 and k2 != k: X[i,j,k2] >= X[j,i,k];
+subto r19: forall <i,j,k> in I*I*K with j != i and k <= 18-c : sum <k2> in K with k <= k2 and k2 <= k+c: (X[i,j,k2] + X[j,i,k2]) <= 1 ;
+subto r20: forall <i,j,k> in I*I*K with j != i: sum <k2> in K with k2 != k and k-d <= k2 and 1 <= k2 and (k2 <= k + d  or k2 <= 18) :  X[i,j,k2] >= X[j,i,k];
