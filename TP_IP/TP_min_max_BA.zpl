@@ -4,6 +4,8 @@ set K := {1..18};
 set K_odd := {<k> in K with k mod 2 == 1};
 set Is := {2,7};
 #Variables 
+param c := 5;
+param d := 13;
 
 var X[I*I*K] binary;
 var W[I*K_odd] binary;
@@ -33,8 +35,10 @@ subto r10: forall <i,k> in I*K_odd: sum <j> in I with i != j: (X[j,i,k] + X[j,i,
 subto r11: forall <i,k> in I*K_odd: sum <j> in I with i != j: X[j,i,k] >= W[i,k] ;
 subto r12: forall <i,k> in I*K_odd: sum <j> in I with i != j: X[j,i,k+1] >= W[i,k] ;
 
-#mirror 
-subto r14: forall <i,j,k> in I*I*K with j != i and with k <= 9 : X[i,j,k]  ==  X[j,i,k+9];
+#min_max
+subto r19: forall <i,j,k> in I*I*K with j != i and k <= 18-c : sum <k2> in K with k <= k2 and k2 <= k+c: (X[i,j,k2] + X[j,i,k2]) <= 1 ;
+subto r20: forall <i,j,k> in I*I*K with j != i: sum <k2> in K with k2 != k and k-d <= k2 and 1 <= k2 and (k2 <= k + d  or k2 <= 18) :  X[i,j,k2] >= X[j,i,k];
+
 # Parte Argentina Brasil 
 
 subto r5: forall <i> in I without Is: forall <k> in K with k < 18 : sum <j> in Is : (X[i,j,k] + X[j,i,k] + X[i,j,k+1] + X[j,i,k+1]) <= 1;
